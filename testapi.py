@@ -15,12 +15,12 @@ secret_list2 = [1]
 
 
 
-config_list = {'每次轮数':8,
+config_list = {'每次轮数':13,
 	       '是否启动随机时间':'Y','延时范围起始':600,'结束':1200,
 	       '是否开启随机api顺序':'Y',
 	       '是否开启各api延时':'N','api延时范围开始':2,'api延时结束':5,
 	       '是否开启各账号延时':'Y','账号延时范围开始':60,'账号延时结束':120,
-	       '是否开启备用应用':'N','是否开启测试':'Y'}
+	       '是否开启备用应用':'N','是否开启测试':'N'}
 
 num1 = [0]*len(id_list)
 path2=sys.path[0]+r'/config/randomapi.txt'
@@ -99,7 +99,7 @@ def testapi(path,a,ls):
     print('账号 '+str(a)+'\n第 '+str(ls)+' 轮运行开始时间为 :', localtime)
     if config_list['是否开启随机api顺序'] == 'Y':
         print('总api数13个，请自行确认个数')
-        for ra in range(14):
+        for ra in range(30):
             rana = str(randomapi[ra])
             try:
                 if req.get(rapi[rana],headers=headers).status_code == 200:
@@ -113,7 +113,7 @@ def testapi(path,a,ls):
                 pass
     else:
         print('总api数10个，请自行确认个数')
-        for ra in range(1,12):
+        for ra in range(1,30):
             rana = str(ra)
             try:
                 if req.get(rapi2[rana],headers=headers).status_code == 200:
